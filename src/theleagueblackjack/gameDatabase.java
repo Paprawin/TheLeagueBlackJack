@@ -16,7 +16,7 @@ public class gameDatabase {
     static final String DBNAME = "gamedata"; // Database name
     static final String URL = "jdbc:mysql://localhost/";
     static final String USER = "root";
-    static final String PASSWORD = "edsel123";
+    static final String PASSWORD = "password";
     static final String GAMEUSER = "blackJack";//
     static final String GAMEPASSWORD = "blackjackGame"; //
     static final String TABLENAME = "PlayerInfo"; // 
@@ -43,8 +43,8 @@ public class gameDatabase {
             System.out.println("Creating user...");
             stmt = conn.createStatement();
             
-           // String userCreate = "CREATE USER '" + GAMEUSER +"'@'localhost' identified by '" + GAMEPASSWORD+ "';";
-            //stmt.executeUpdate(userCreate);
+            String userCreate = "CREATE USER '" + GAMEUSER +"'@'%' identified by '" + GAMEPASSWORD+ "';";
+            stmt.executeUpdate(userCreate);
             
             String permissions = "grant select, insert, update, delete, create, create view, drop, execute, references on *.* to '"+GAMEUSER
                     +"'@'%' identified by '"+GAMEPASSWORD +"';"; 
